@@ -6,7 +6,6 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] float lookSensitivityX = 3f;
     [SerializeField] float lookSensitivityY = 4f;
     [SerializeField] Vector2 lookRangeY = new Vector2(-75f, 60f);
-    [SerializeField] Vector3 offset = new Vector3(0, 0.3f, 0);
     [SerializeField] new Camera camera;
 
     float cameraXRotation = 0;
@@ -15,11 +14,6 @@ public class FirstPersonController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-    }
-
-    private void LateUpdate()
-    {
-        camera.transform.position = transform.position + offset;
     }
 
     public void InputLook(InputAction.CallbackContext callback)
@@ -31,7 +25,7 @@ public class FirstPersonController : MonoBehaviour
         cameraXRotation = Mathf.Clamp(cameraXRotation, lookRangeY.x, lookRangeY.y);
 
         //Apply camera rotation
-        camera.transform.localRotation = Quaternion.Euler(cameraXRotation, transform.rotation.eulerAngles.y, 0f);
+        camera.transform.localRotation = Quaternion.Euler(cameraXRotation, 0f, 0f);
 
         //Apply player rotation using mouse X axis
         transform.Rotate(delta.x * lookSensitivityX * Vector3.up);
