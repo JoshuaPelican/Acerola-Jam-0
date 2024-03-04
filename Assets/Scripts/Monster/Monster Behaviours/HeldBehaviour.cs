@@ -3,22 +3,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Held Behaviour", menuName = "Monster Behaviours/Held")]
 public class HeldBehaviour : MonsterBehaviour
 {
-    public float AngerPerSecond = 0.01f;
+    public float AngerPerUpdate = 0.01f;
 
-    public override void UpdateBehaviour(MonsterController monster)
+    public override bool UpdateBehaviour(MonsterController monster)
     {
         if (!monster.Pickup.IsBeingHeld)
-            return;
+            return false;
 
-        monster.AddAnger(AngerPerSecond * Time.deltaTime);
-
-        Debug.Log($"{monster.name} {name}...");
+        monster.AddAnger(AngerPerUpdate);
+        return true;
     }
 
-    public override void DoMonsterThing(MonsterController monster)
+    public override void DoBehaviour(MonsterController monster)
     {
-        monster.ResetAnger();
-        monster.Pickup.IsInteractable = false;
         monster.Pickup.ForceRelease();
     }
 }

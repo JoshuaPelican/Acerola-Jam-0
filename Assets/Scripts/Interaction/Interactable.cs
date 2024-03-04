@@ -7,7 +7,7 @@ public abstract class Interactable : MonoBehaviour
     protected Collider col;
     protected Rigidbody rb;
     
-    private void Awake()
+    public virtual void Awake()
     {
         col = GetComponent<Collider>();
         rb = GetComponent<Rigidbody>();

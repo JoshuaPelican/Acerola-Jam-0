@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: InBox_Hate
   m_EditorClassIdentifier: 
   IsActive: 1
-  AngerPerSecond: 1
+  AngerPerUpdate: 0.01

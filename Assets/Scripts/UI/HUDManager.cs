@@ -15,7 +15,6 @@ public class HUDManager : MonoBehaviour
 
     void UpdateInteractCursor(bool canInteract)
     {
-        Debug.Log("Cursor Update");
         cursor.CrossFadeAlpha(canInteract ? 1f : 0.5f, 0.25f, false);
     }
 

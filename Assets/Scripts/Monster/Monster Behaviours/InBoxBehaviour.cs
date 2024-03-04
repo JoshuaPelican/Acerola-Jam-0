@@ -3,21 +3,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "In Box Behaviour", menuName = "Monster Behaviours/In Box")]
 public class InBoxBehaviour : MonsterBehaviour
 {
-    public float AngerPerSecond = 0.01f;
+    public float AngerPerUpdate = 0.01f;
 
-    public override void UpdateBehaviour(MonsterController monster)
+    public override bool UpdateBehaviour(MonsterController monster)
     {
         if (!BoxController.IsInBox(monster.Pickup))
-            return;
+            return false;
 
-        monster.AddAnger(AngerPerSecond * Time.deltaTime);
-
-        Debug.Log($"{monster.name} {name}...");
+        monster.AddAnger(AngerPerUpdate);
+        return true;
     }
 
-    public override void DoMonsterThing(MonsterController monster)
+    public override void DoBehaviour(MonsterController monster)
     {
-        monster.ResetAnger();
         monster.transform.position = Vector3.zero;
     }
 }

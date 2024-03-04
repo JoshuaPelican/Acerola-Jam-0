@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Held_Love
   m_EditorClassIdentifier: 
   IsActive: 1
-  AngerPerSecond: -0.01
+  Positive: 1
+  AngerPerUpdate: -0.005
