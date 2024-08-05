@@ -54,10 +54,10 @@ public class MonsterController : MonoBehaviour
             if(behaviour.UpdateBehaviour(this))
                 Debug.Log($"{name} {behaviour.name}...");
 
-            float rand = Random.Range(0f, 1f);
-
             if (behaviour.Positive)
                 continue;
+
+            float rand = Random.Range(0f, 1f);
 
             if (Anger >= MaxAnger)
             {

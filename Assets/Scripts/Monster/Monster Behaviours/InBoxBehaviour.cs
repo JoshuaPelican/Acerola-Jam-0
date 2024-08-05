@@ -8,6 +8,17 @@ public class InBoxBehaviour : MonsterBehaviour
     public override bool UpdateBehaviour(MonsterController monster)
     {
         if (!BoxController.IsInBox(monster.Pickup))
+        {
+            if (Opposite)
+            {
+                monster.AddAnger(AngerPerUpdate);
+                return true;
+            }
+
+            return false;
+        }
+
+        if (Opposite)
             return false;
 
         monster.AddAnger(AngerPerUpdate);

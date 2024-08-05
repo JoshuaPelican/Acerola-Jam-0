@@ -8,6 +8,17 @@ public class VisibleBehaviour : MonsterBehaviour
     public override bool UpdateBehaviour(MonsterController monster)
     {
         if (!monster.Pickup.Renderer.isVisible)
+        {
+            if (Opposite)
+            {
+                monster.AddAnger(AngerPerUpdate);
+                return true;
+            }
+
+            return false;
+        }
+
+        if (Opposite)
             return false;
 
         monster.AddAnger(AngerPerUpdate);
